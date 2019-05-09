@@ -65,10 +65,20 @@ $(function() {
           */
     describe('The menu',function(){
         it('is hidden by default',function(){
-            let menu=document.querySelector('.menu-hidden')
-            expect(menu).not.toBe(null);
-        })
             
+            expect($('.menu-hidden')).not.toBe(null);
+        })
+      
+        it('changes correctly',function(){
+            
+            $('.menu-icon-link').trigger('click')
+           
+            expect($('.menu-hidden')[0]).not.toBeDefined();
+            $('.menu-icon-link').trigger('click')
+           
+            expect($('.menu-hidden')[0]).toBeDefined();
+
+        })        
     })
     /* TODO: Write a new test suite named "Initial Entries" */
 
@@ -78,11 +88,41 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-
+    // describe('Initial Entries',function(){
+        
+    //     beforeEach(function(done){
+    //         loadFeed(0,function(){
+    //             done();
+    //         })
+    //     })
+    //     it('loadFeed() is called and completes its work',function(done){
+    //         var container = $('.feed')
+    //        expect(container[0].textContent.length).not.toBe(0);
+    //        done();
+    //     })
+    // })
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    describe('New Feed Selection',function(){
+        var prev,current;
+        beforeEach(function(done){
+            $('.feed').empty();
+            loadFeed(0, function () {
+                prev = $('.feed').find(allFeeds.url);
+                done();
+            });
+            loadFeed(1, function () {
+                current= $('.feed').find(allFeeds.url);
+                done();
+            });
+        })
+        it('change the feed',function(done){
+            expect(prev).not.toBe(current);
+            done();
+        })
+    })
 }());
