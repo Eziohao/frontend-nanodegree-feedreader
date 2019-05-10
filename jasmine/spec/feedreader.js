@@ -54,6 +54,7 @@ $(function() {
     })
    
     describe('New Feed Selection',function(){ //test if the feed is changed when user click new topic
+
         var prev,current;
         beforeEach(function(done){
             $('.feed').empty();
