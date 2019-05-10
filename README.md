@@ -1,5 +1,8 @@
 # Steps
-### 1. Open index.html
+### 1. Clone project or download the zip file in your computer 
 
-### 2. On the bottom of the page shows the test results
+### 2. the testing file is in the jasmine/spec/feedreader.js
 
+### 3. you could open the index.html file in the root.
+
+### 4. test results will show on the bottom of the page.
